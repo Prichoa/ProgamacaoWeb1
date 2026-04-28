@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1> Java Script - Primeiros Passos</h1>
+    <h2>1.Saída - Alert()</h2>
+    <p>Mostra uma mensagem em uma caixa de diálogo</p>
+    button onclick="alert('Olá Mundo!')">Clique aqui</button>
+    <h2>2.Saída ->document.write()</h2>
+    <p>Escrever texto na página:</p>
+    <button onclick="minhaFuncao()">
+        Clique aqui! </button>
+
+<h2>3.Entrada -> promt()</h2>
+<p>Pede uma informação do usuário:</p>
+<button onclick="perguntar()">Clique aqui!</button>
+<div id="res1" class="resultado"></div>
+
+<h2>4.Entrada - <input type="HTML"></h2>
+<p>Campo de entrada tradicional:</p>
+<input type="text" id="entrada" placeholder="Digite algo..."
+<button onclick="mostrarTexto()"> Enviar</button>
+<div id="res2" class="resultado"></div>
+
+<h2>5.Somar dois valores</h2>
+<p>Calculadora simples:</p>
+<input type="number" id="num1" placeholder="Número1">
+<input type="number" id="num2" placeholder="Número2">
+<button onclick="somar()">Somar</button>
+<div id="res3" class="resultado"></div>
+
+<h2>6.Media escolar:</h2>
+<p>Insira as 3 notas:</p>
+<input type="number" id="nota1" placeholder="Nota1">
+<input type="number" id="nota2" placeholder="Nota2">
+<input type="number" id="nota3" placeholder="Nota3">
+<button onclick="calcularMedia()">Calcular</button>
+<div id="res4" class="resultado"></div>
+
+<h2>7.Conversão de Dólar:</h2>
+<p>Insira o valor em dólar e a cotação do dia:</p>
+<input type="number" id="dolar" placeholder="Valor em Dólar">
+<input type="number" id="cotacao" placeholder="Cotação do Dia">
+<button onclick="converterDolar()">Converter</button>
+<div id="res5" class="resultado"></div>
+
+<h2>8.Cálculo de Área</h2>
+<p>Insira as dimensões para calcular a área:</p>
+<input type="number" id = "base" placeholder="base">
+<input type="number" id = "altura" placeholder="altura">
+<button onclick="calcularArea()">Calcular</button>
+<div id="res6" class="resultado"></div>
+
+
+<script src="./script.js"></script>
+
+
+</body>
+</html>
