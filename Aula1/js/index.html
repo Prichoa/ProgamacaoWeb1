@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1> Java Script - Primeiros Passos</h1>
+    <h2>1.Saída - alert()</h2>
+    <p>Mostra uma mensagem em uma caixa de diálogo</p>
+
+    <button onclick="alert('Olá Mundo!')">Clique aqui</button>
+    
+    <h2>2.Saída ->document.write()</h2>
+    <p>Escrever texto na página:</p>
+    <button onclick="minhaFuncao()">
+        Clique aqui! </button>
+
+<h2>3.Entrada -> promt()</h2>
+<p>Pede uma informação do usuário:</p>
+<button onclick="perguntar()">Clique aqui!</button>
+<div id="res1" class="resultado"></div>
+
+
+
+<h2>4.Entrada - Entrada HTML</h2>
+<p>Campo de entrada tradicional:</p>
+<input type="text" id="entrada" placeholder="Digite algo...">
+<button onclick="mostrarTexto()"> Enviar</button>
+
+<div id="res2" class="resultado"></div>
+
+
+
+<h2>5.Somar dois valores</h2>
+   <p>Calculadora simples:</p>
+
+<input type="number" id="num1" placeholder="Número1">
+<input type="number" id="num2" placeholder="Número2">
+<button onclick="somar()">Somar</button>
+
+<div id="res3" class="resultado"></div>
+
+
+
+<h2>6. Média Escolar</h2>
+    <p>Digite as 3 notas do aluno:</p>
+
+    <input type="number" id="nota1" placeholder="Primeira Nota">
+    <input type="number" id="nota2" placeholder="Segunda Nota">
+    <input type="number" id="nota3" placeholder="Terceira Nota">
+
+    <button onclick="calcularMedia()">Calcular Média</button>
+
+<div id="res4" class="resultado"></div>
+
+
+
+<h2>7.Conversão de Dólar:</h2>
+<p>Insira o valor em dólar e a cotação do dia:</p>
+
+    <input type="number" id="dolar" placeholder="Valor em Dólar">
+    <input type="number" id="cotacao" placeholder="Cotação do Dia">
+
+    <button onclick="converterDolar()">Converter</button>
+
+<div id="res5" class="resultado"></div>
+
+
+
+<h2>8.Cálculo de Área</h2>
+<p>Insira as dimensões para calcular a área:</p>
+
+<input type="number" id = "base" placeholder="base">
+<input type="number" id = "altura" placeholder="altura">
+
+<button onclick="calcularArea()">Calcular</button>
+
+<div id="res6" class="resultado"></div>
+
+
+
+<h2>9.Antecessor e Sucessor</h2>
+<p>Digite um número:</p>
+<input type="number" id="numero" placeholder="Número">
+
+<button onclick="calcularAntecessorSucessor()">Calcular</button>
+
+<div id="res7" class="resultado"></div>
+
+
+
+<h2>10.Par ou Ímpar</h2>
+<p>Digite um número para verificar se é par ou ímpar:</p>
+<input type="number" id="numero2" placeholder="Número">
+
+<button onclick="verificarParImpar()">Verificar</button>
+<div id="res8" class="resultado"></div>
+
+
+
+<h2>11.Radar de Velocidade</h2>
+<p>Digite a velocidade do veículo:</p>
+<input type="number" id="velocidade" placeholder="Velocidade(km/h)"
+>
+<button onclick="verificarVelocidade()">Verificar</button>
+
+<div id="res9" class="resultado"></div> 
+
+
+
+<h2>12. Maior de Idade (Habilitação)</h2>
+<p>Informe o ano de nascimento e o ano atual:</p>
+
+<input type="number" id="anoNascimento" placeholder="Ano de Nascimento">
+<input type="number" id="anoAtual" placeholder="Ano Atual">
+
+<button onclick="maiorIdade()">Verificar Idade</button>
+
+<div id="res10" class="resultado"></div>
+
+
+
+<h2>13. Calculadora de IMC</h2>
+<p>Informe seu peso e altura:</p>
+
+<input type="number" id="peso" placeholder="Peso em KG">
+<input type="number" step="0.01" id="alturaImc" placeholder="Altura em metros">
+
+<button onclick="calcularIMC()">Calcular IMC</button>
+
+<div id="res11" class="resultado"></div>
+
+
+<h2>14. Simulador de Desconto Progressivo</h2>
+<p>Informe o valor total da compra:</p>
+
+<input type="number" id="valorCompra" placeholder="Valor da Compra">
+
+<button onclick="calcularDesconto()">Calcular Desconto</button>
+
+<div id="res12" class="resultado"></div>
+
+
+
+<h2>15. Comparador de Números</h2>
+<p>Digite dois números diferentes:</p>
+
+<input type="number" id="numero1" placeholder="Primeiro Número">
+<input type="number" id="numero2" placeholder="Segundo Número">
+
+<button onclick="compararNumeros()">Comparar</button>
+
+<div id="res13" class="resultado"></div>
+
+
+<link rel="stylesheet" href="../css/Style.css">
+<script src="./script.js"></script>
+
+
+</body>
+</html>
