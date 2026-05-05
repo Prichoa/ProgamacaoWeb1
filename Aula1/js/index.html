@@ -70,7 +70,7 @@
 
 
 <h2>8.Cálculo de Área</h2>
-<p>Insira as dimensões para calcular a área:</p>
+<p>Insira as dimensões para calcular a área:</p>      
 
 <input type="number" id = "base" placeholder="base">
 <input type="number" id = "altura" placeholder="altura">
@@ -153,6 +153,240 @@
 <button onclick="compararNumeros()">Comparar</button>
 
 <div id="res13" class="resultado"></div>
+
+<hr>
+
+
+<h2>16. Classificação de Triângulos</h2>
+
+<input type="number" id="lado1" placeholder="Lado 1">
+<input type="number" id="lado2" placeholder="Lado 2">
+<input type="number" id="lado3" placeholder="Lado 3">
+
+<button onclick="classificarTriangulo()">Classificar</button>
+
+<div id="res14" class="resultado"></div>
+
+<hr>
+
+
+<h2>17. Menu de Bebidas</h2>
+
+<p>1-Suco | 2-Refrigerante | 3-Água</p>
+
+<input type="number" id="bebida" placeholder="Escolha uma opção">
+
+<button onclick="menuBebidas()">Escolher</button>
+
+<div id="res15" class="resultado"></div>
+
+<hr>
+
+
+<h2>18. Vogal ou Consoante</h2>
+
+<input type="text" id="letra" placeholder="Digite uma letra">
+
+<button onclick="verificarLetra()">Verificar</button>
+
+<div id="res16" class="resultado"></div>
+
+<hr>
+
+
+<h2>19. Calculadora Simples</h2>
+
+<input type="number" id="calc1" placeholder="Primeiro Número">
+<input type="number" id="calc2" placeholder="Segundo Número">
+<input type="text" id="operacao" placeholder="+ - * /">
+
+<button onclick="calculadora()">Calcular</button>
+
+<div id="res17" class="resultado"></div>
+
+<hr>
+
+
+<h2>20. Conversor de Moedas Pro</h2>
+
+<input type="number" id="valorReal" placeholder="Valor em Reais">
+<input type="number" id="tipoMoeda" placeholder="1-Dólar | 2-Euro | 3-Peso">
+
+<button onclick="converterMoeda()">Converter</button>
+
+<div id="res18" class="resultado"></div>
+
+<hr>
+
+
+<h2>21. Contagem Progressiva</h2>
+
+<button onclick="contagem()">Mostrar Contagem</button>
+
+<div id="res19" class="resultado"></div>
+
+<hr>
+
+<h2>22. Tabuada Dinâmica</h2>
+
+<input type="number" id="tabuadaNumero" placeholder="Digite um número">
+
+<button onclick="tabuada()">Gerar Tabuada</button>
+
+<div id="res20" class="resultado"></div>
+
+<hr>
+
+
+<h2>23. Somador de Números</h2>
+
+<input type="number" id="s1" placeholder="Número 1">
+<input type="number" id="s2" placeholder="Número 2">
+<input type="number" id="s3" placeholder="Número 3">
+<input type="number" id="s4" placeholder="Número 4">
+<input type="number" id="s5" placeholder="Número 5">
+
+<button onclick="somador()">Somar</button>
+
+<div id="res21" class="resultado"></div>
+
+<hr>
+
+
+<h2>24. Apenas os Pares</h2>
+
+<button onclick="pares()">Mostrar Pares</button>
+
+<div id="res22" class="resultado"></div>
+
+<hr>
+
+
+<h2>25. Fatorial</h2>
+
+<input type="number" id="fatorialNumero" placeholder="Digite um número">
+
+<button onclick="fatorial()">Calcular</button>
+
+<div id="res23" class="resultado"></div>
+
+<hr>
+
+
+<h2>26. Validação de Dados</h2>
+
+<input type="number" id="notaValidacao" placeholder="Nota entre 0 e 10">
+
+<button onclick="validarDados()">Validar</button>
+
+<div id="res24" class="resultado"></div>
+
+<hr>
+
+
+<h2>27. Média de Idades</h2>
+
+<p>Digite idades separadas por vírgula. Ex: 20,18,25,30,0</p>
+
+<input type="text" id="idades" placeholder="Digite as idades">
+
+<button onclick="mediaIdades()">Calcular Média</button>
+
+<div id="res25" class="resultado"></div>
+
+<hr>
+
+
+<h2>28. Lista de Nomes</h2>
+
+<button onclick="listaNomes()">Mostrar Nomes</button>
+
+<div id="res26" class="resultado"></div>
+
+<hr>
+
+
+<h2>29. Maior Valor no Array</h2>
+
+<input type="text" id="arrayMaior" placeholder="Digite 10 números separados por vírgula">
+
+<button onclick="maiorValor()">Verificar</button>
+
+<div id="res27" class="resultado"></div>
+
+<hr>
+
+
+<h2>30. Inversor de Ordem</h2>
+
+<input type="text" id="arrayInverso" placeholder="Digite 5 números">
+
+<button onclick="inverterArray()">Inverter</button>
+
+<div id="res28" class="resultado"></div>
+
+<hr>
+
+
+<h2>31. Localizador de Nomes</h2>
+
+<input type="text" id="buscarNome" placeholder="Digite um nome">
+
+<button onclick="localizarNome()">Buscar</button>
+
+<div id="res29" class="resultado"></div>
+
+<hr>
+
+
+<h2>32. Filtro de Notas</h2>
+
+<input type="text" id="notasArray" placeholder="Digite 10 notas">
+
+<button onclick="filtroNotas()">Filtrar</button>
+
+<div id="res30" class="resultado"></div>
+
+<hr>
+
+
+<h2>33. Login de Acesso</h2>
+
+<input type="text" id="login" placeholder="Digite o login">
+
+<button onclick="loginSistema()">Entrar</button>
+
+<div id="res31" class="resultado"></div>
+
+<hr>
+
+
+<h2>34. Média de Vendas Mensais</h2>
+
+<input type="text" id="vendas" placeholder="Digite 12 vendas">
+
+<button onclick="mediaVendas()">Calcular</button>
+
+<div id="res32" class="resultado"></div>
+
+<hr>
+
+
+<h2>35. Carrinho de Compras</h2>
+
+<input type="text" id="produto1" placeholder="Produto 1">
+<input type="number" id="preco1" placeholder="Preço 1">
+
+<input type="text" id="produto2" placeholder="Produto 2">
+<input type="number" id="preco2" placeholder="Preço 2">
+
+<input type="text" id="produto3" placeholder="Produto 3">
+<input type="number" id="preco3" placeholder="Preço 3">
+
+<button onclick="carrinho()">Gerar Nota</button>
+
+<div id="res33" class="resultado"></div>
+
 
 
 <link rel="stylesheet" href="../css/Style.css">
