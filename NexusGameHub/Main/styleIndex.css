@@ -34,6 +34,42 @@ body {
 a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
 
+.about-button {
+  position: fixed;
+  top: 16px;
+  right: 18px;
+  z-index: 220;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: .85rem 1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.16);
+  background: rgba(8, 4, 24, .88);
+  color: #fff;
+  font-family: var(--hd);
+  font-size: .72rem;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  transition: transform .25s var(--ease), box-shadow .25s var(--ease), border-color .25s var(--ease);
+  box-shadow: 0 0 0 rgba(255,255,255,0);
+}
+.about-button:hover,
+.about-button:focus {
+  transform: translateY(-1px);
+  border-color: rgba(191,0,255,.38);
+  box-shadow: 0 0 24px rgba(191,0,255,.16);
+}
+@media (max-width: 860px) {
+  .about-button {
+    right: 16px;
+    top: auto;
+    bottom: 16px;
+    padding: .75rem .95rem;
+    font-size: .7rem;
+  }
+}
+
 /* ─── BACKGROUND LAYERS ──────────────────────────────────── */
 #bgCanvas {
   position: fixed; inset: 0;

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sobre — Nexus Game Hub</title>
+  <link rel="stylesheet" href="styleIndex.css">
+  <link rel="stylesheet" href="sobre.css">
+</head>
+<body>
+  <canvas id="bgCanvas"></canvas>
+  <div class="noise"></div>
+  <div class="vignette"></div>
+
+  <nav class="navbar">
+    <a href="index.html" class="nb-back">
+      <span class="arrow">◂</span> VOLTAR
+    </a>
+    <div class="nb-title">SOBRE O PROJETO</div>
+    <a href="index.html" class="nb-brand">NEXUS</a>
+  </nav>
+
+  <main class="about-main">
+    <section class="about-hero">
+      <p class="about-tag">Explicações técnicas e decisões de front-end</p>
+      <h1>Como o Nexus Game Hub foi construído</h1>
+      <p class="about-copy">Aqui você encontra a estrutura de cada jogo e os motivos técnicos que orientaram as escolhas de Kelvyn, Erika e Lucas. O conteúdo foi pensado para responder perguntas no nível de um desenvolvedor sênior em front-end.</p>
+    </section>
+
+    <section class="about-basics">
+      <h2>O que é front-end?</h2>
+      <p><strong>Front-end</strong> é tudo que você vê e clica no navegador. É como a "cara" de um site ou aplicativo. O HTML é a estrutura (o esqueleto), o CSS é a beleza (roupa e maquiagem), e o JavaScript é a lógica (o cérebro que faz as coisas funcionarem).</p>
+      <div class="basics-grid">
+        <div class="basic-box">
+          <h3>🏗️ HTML</h3>
+          <p>Linguagem de marcação. Define os elementos: botões, títulos, placar, histórico. É como escrever "aqui tem um botão" e "ali tem um texto".</p>
+        </div>
+        <div class="basic-box">
+          <h3>🎨 CSS</h3>
+          <p>Folha de estilos. Define cores, tamanhos, posições, animações. Transforma um HTML simples em algo bonito e responsivo (que funciona em qualquer tela).</p>
+        </div>
+        <div class="basic-box">
+          <h3>⚙️ JavaScript</h3>
+          <p>Linguagem de programação. Faz o interativo: quando você clica, o jogo reage. Calcula resultados, atualiza números, guarda dados.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-grid">
+      <article class="dev-card">
+        <div class="card-head">
+          <span class="card-role">Kelvyn</span>
+          <span class="card-game">Dados</span>
+        </div>
+        <p>Eu estruturei o jogo como um módulo de sorte com uma interface clara de placar, arena e histórico. Separei a lógica de animação, a persistência do estado e a renderização em camadas distintas para tornar o código escalável.</p>
+        <div class="faq">
+          <h2>Perguntas de front-end sênior</h2>
+          <div class="faq-item">
+            <p class="faq-question">1. Por que você usou `localStorage` para armazenar o placar?</p>
+            <p class="faq-answer"><strong>O básico:</strong> localStorage é um espaço de armazenamento que fica no navegador do usuário, permitindo guardar informações mesmo depois que ele sai do site. <strong>No meu projeto:</strong> Usei para guardar quantas vitórias, empates e derrotas o jogador teve em cada partida. Quando ele volta ao jogo, o placar não zera. <strong>Por quê?</strong> Isso mantém a experiência contínua, sem precisar de um servidor que custe dinheiro. Se usássemos um servidor, teríamos que enviar dados toda hora e esperar uma resposta, deixando o jogo mais lento.</p>
+          </div>
+          <div class="faq-item">
+            <p class="faq-question">2. Como você separou a animação de rolagem do estado do jogo?</p>
+            <p class="faq-answer"><strong>O básico:</strong> Animação é quando algo se move ou muda na tela. Estado é a informação real que você quer guardar (quem venceu, quantas vitórias). <strong>No meu projeto:</strong> Quando o jogador aperta "Lançar", os dados giram e fazem barulho na tela por alguns segundos (animação). Depois que terminam, meu JavaScript calcula quem ganhou e atualiza o placar (estado). <strong>Por quê separar?</strong> Assim, a tela fica suave e o jogo não trava enquanto os dados estão girando. Se eu misturasse os dois, o navegador ficaria travado durante a animação.</p>
+          </div>
+          <div class="faq-item">
+            <p class="faq-question">3. Quais critérios você usou para o layout e a hierarquia visual?</p>
+            <p class="faq-answer"><strong>O básico:</strong> Hierarquia visual significa organizar o que é mais importante para aparecer em destaque. Contraste significa usar cores ou tamanhos bem diferentes. <strong>No meu projeto:</strong> O placar aparece no topo grande e colorido. Os dados ficam no meio bem visíveis. O resultado pisca em uma faixa chamativa no meio. <strong>Por quê?</strong> Quando alguém abre a página, os olhos vão direto para o que importa: quanto ganhou até agora, que números saíram e se venceu. O histórico de rodas antigas fica em baixo, porque é menos importante que o jogo atual.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="dev-card">
+        <div class="card-head">
+          <span class="card-role">Erika</span>
+          <span class="card-game">Cara ou Coroa</span>
+        </div>
+        <p>Eu projetei um fluxo de escolha intuitivo com feedback visual imediato. Meu código prioriza a experiência do usuário por meio de estados de botão, animação de moeda e histórico de apostas.</p>
+        <div class="faq">
+          <h2>Perguntas de front-end sênior</h2>
+          <div class="faq-item">
+            <p class="faq-question">1. Por que você adicionou a barra de streak?</p>
+            <p class="faq-answer"><strong>O básico:</strong> Streak significa uma sequência de sucessos seguidos. Na página tem um contador que mostra "Sequência: 0". <strong>No meu projeto:</strong> Cada vez que o jogador acerta, o número sobe (sequência de 1, 2, 3...). Se errar, volta para zero. <strong>Por quê?</strong> Psicologicamente, ver uma sequência crescente motiva o usuário a continuar jogando para não "quebrar" a sequência. É como jogar videogame e querer chegar ao próximo nível. Sem isso, o jogo seria só "você venceu" ou "você perdeu", sem um objetivo extra.</p>
+          </div>
+          <div class="faq-item">
+            <p class="faq-question">2. Como você fez a interação de seleção de cara/coroa segura e acessível?</p>
+            <p class="faq-answer"><strong>O básico:</strong> Um botão `button` é um elemento HTML que qualquer um pode clicar. Acessível significa que funciona para qualquer pessoa, até quem não consegue usar mouse (usa teclado). <strong>No meu projeto:</strong> Em vez de usar divs e simulador de botão, usei elementos reais `&lt;button&gt;`. Quando alguém clica, o botão fica com a classe `selected` para ficar destacado. <strong>Por quê?</strong> Elementos `button` reais funcionam com teclado automaticamente. Pessoa cega ou com deficiência motora consegue jogar usando Tab e Enter. Se eu fizesse só com divs, não funcionaria para eles.</p>
+          </div>
+          <div class="faq-item">
+            <p class="faq-question">3. Qual foi sua decisão de performance ao animar a moeda?</p>
+            <p class="faq-answer"><strong>O básico:</strong> Performance é velocidade. Quando você anima algo, o navegador precisa redesenhar a tela muitas vezes. Há duas formas: mudar o HTML a cada frame (lento) ou mudar apenas o CSS (rápido). <strong>No meu projeto:</strong> A moeda gira usando uma classe CSS chamada `flipping` que tem uma animação. Meu JavaScript só muda a classe uma vez, e o CSS cuida de toda a rotação. <strong>Por quê?</strong> O CSS é otimizado para animações e deixa a moeda girar suave. Se eu mudasse o HTML ou os estilos com JavaScript a cada frame, o navegador ficaria lento e a animação trepidaria. Além disso, em celulares com bateria fraca, é fácil desligar a animação CSS.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="dev-card">
+        <div class="card-head">
+          <span class="card-role">Lucas</span>
+          <span class="card-game">Jokenpô</span>
+        </div>
+        <p>Eu implementei a lógica de jogo com uma estrutura de regras declarativa, deixando o código pronto para novas escolhas e extensões. Também adicionei atalhos de teclado para melhorar a acessibilidade e a jogabilidade.</p>
+        <div class="faq">
+          <h2>Perguntas de front-end sênior</h2>
+          <div class="faq-item">
+            <p class="faq-question">1. Por que organizar as regras em um objeto `CHOICES`?</p>
+            <p class="faq-answer"><strong>O básico:</strong> Um objeto é uma forma de guardar informações relacionadas juntas. Por exemplo, guardar qual é o ícone do pedra, qual é o nome, e qual opção ela vence. <strong>No meu projeto:</strong> Ao invés de ter variáveis espalhadas como `pedra_icon`, `pedra_nome`, `pedra_bate`, uso um objeto `CHOICES` que tem tudo junto: `{ rock: { icon: '✊', label: 'PEDRA', beats: 'scissors' } }`. <strong>Por quê?</strong> Se eu quiser adicionar uma 4ª opção (tipo "Pedra de Fogo"), basta adicionar ela no objeto, e toda a lógica funciona igual. Sem o objeto, eu teria que mudar o código em vários lugares. Com o objeto, é só adicionar uma linha.</p>
+          </div>
+          <div class="faq-item">
+            <p class="faq-question">2. Como você lidou com feedback visual no resultado?</p>
+            <p class="faq-answer"><strong>O básico:</strong> Feedback visual significa mostrar na tela o que aconteceu. Classe CSS é um nome que você coloca no HTML para aplicar estilos do CSS. <strong>No meu projeto:</strong> Quando o jogador vence, a página adiciona uma classe chamada `result-win` que deixa tudo verde e alegre. Quando perde, adiciona `result-lose` que deixa tudo vermelho. Quando empata, adiciona `result-draw` que deixa azul. <strong>Por quê?</strong> Assim meu JavaScript fica simples, apenas diz "vitória" ou "derrota". O CSS cuida de deixar bonito (cores, brilhos, animações). Se eu colocasse todas as cores e animações no JavaScript, o código fica bagunçado e difícil de entender.</p>
+          </div>
+          <div class="faq-item">
+            <p class="faq-question">3. Quais práticas você seguiu para manter o código reutilizável?</p>
+            <p class="faq-answer"><strong>O básico:</strong> Código reutilizável significa escrever uma função uma vez e usar em vários lugares, ao invés de copiar a mesma coisa várias vezes. <strong>No meu projeto:</strong> Criei funções como `bumpNum()` (anima um número no placar), `renderHistory()` (desenha o histórico), `updateHUD()` (atualiza a tela). Se eu precisar mudar como o histórico é desenhado, mudo em um único lugar. <strong>Por quê?</strong> Se eu copiasse o código do histórico 3 vezes, teria que mudar 3 vezes. Com uma função, mudo uma vez e pronto. Além disso, isso deixa fácil para alguém escrever testes automatizados que verificam se o jogo está funcionando certo.</p>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="about-summary">
+      <h2>Visão geral técnica</h2>
+      <p>O projeto segue uma arquitetura de front-end modular: cada jogo tem sua própria pasta com HTML, CSS e JS. A página inicial fica em `Main/index.html` e faz a ponte entre as arenas. A nova página “Sobre” explica o papel de cada desenvolvedor e os motivos de cada escolha técnica.</p>
+      <ul>
+        <li><strong>Pasta:</strong> cada jogo mora em sua própria pasta (Dados, caraoucoroa, jokenpo) para organizar melhor os arquivos.</li>
+        <li><strong>HTML:</strong> estrutura da página. Define os botões, placar, histórico e tudo que você vê na tela.</li>
+        <li><strong>CSS:</strong> beleza e aparência. Deixa as coisas coloridas, com animações e responsivas (funciona em celular, tablet, computador).</li>
+        <li><strong>JavaScript:</strong> a lógica do jogo. Calcula quem venceu, atualiza o placar, guarda no `localStorage`.</li>
+        <li><strong>localStorage:</strong> um lugar seguro no navegador para guardar dados do usuário, mesmo depois que ele sai do site.</li>
+        <li><strong>Tema compartilhado:</strong> a página `gameshared.css` tem estilos que todos os jogos usam (fontes, cores, placar padrão), evitando repetir código.</li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>
