@@ -1,14 +1,31 @@
-/* ── BACKGROUND ──────────────────────────────────────────── */
+/* ════════════════════════════════════════════════════════════
+   BATALHA DE DADOS — dados.js
+   Sistema completo do jogo de dados com animação de spinner,
+   lógica de comparação e placar.
+═══════════════════════════════════════════════════════════ */
+
+/* ── BACKGROUND CANVAS (efeito matriz) ────────────────────── */
+// Obtém elemento canvas para desenhar efeito de fundo animado
 const canvas = document.getElementById('bgCanvas');
 const ctx    = canvas.getContext('2d');
+// Função que redimensiona o canvas quando a janela muda de tamanho
 const resize = () => { canvas.width = innerWidth; canvas.height = innerHeight; };
-resize(); window.addEventListener('resize', resize);
+resize();
+window.addEventListener('resize', resize);
 
+// VETOR: cores neon para o efeito de fundo tipo matriz
 const COLS  = ['rgba(0,255,204,.22)','rgba(57,255,20,.15)','rgba(191,0,255,.12)'];
+// String: caracteres que caem no fundo (números e símbolos de dados)
 const CHARS = '123456⚀⚁⚂⚃⚄⚅◈∑';
 const cols  = Math.floor(innerWidth / 28);
+// VETOR: posição Y de cada coluna (para chuva de caracteres)
 const drops = Array.from({length:cols}, () => Math.random() * innerHeight / 20);
 
+/**
+ * Função: drawBg()
+ * Desenha o efeito de fundo animado (chuva de dados)
+ * Chamada: a cada 55ms para animar continuamente
+ */
 function drawBg() {
   ctx.fillStyle = 'rgba(4,2,14,.055)';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -24,35 +41,70 @@ function drawBg() {
 }
 setInterval(drawBg, 55);
 
-/* ── GAME DATA ───────────────────────────────────────────── */
+/* ════════════════════════════════════════════════════════════
+   DADOS - CONSTANTES E DADOS DE JOGO
+════════════════════════════════════════════════════════════ */
+/**
+ * VETOR FACES: contém os 6 símbolos Unicode que representam as faces de um dado
+ * Usados para exibir visualmente qual número saiu
+ * Índice 0 = 1 ponto, Índice 1 = 2 pontos, ... Índice 5 = 6 pontos
+ */
 const FACES = ['⚀','⚁','⚂','⚃','⚄','⚅'];
 
+/**
+ * OBJETO score: mantém dados da partida
+ * Carregado do localStorage se existir, senão usa valores padrão
+ * Propriedades:
+ *   - wins: vitórias do jogador
+ *   - draws: empates
+ *   - loses: derrotas do jogador
+ *   - total: total de rodadas jogadas
+ *   - history[]: array com as últimas 12 rodadas
+ */
 let score = JSON.parse(localStorage.getItem('dados_score') ||
   '{"wins":0,"draws":0,"loses":0,"total":0,"history":[]}');
 
-/* ── DOM REFS ────────────────────────────────────────────── */
-const playerDice = document.getElementById('playerDice');
-const cpuDice    = document.getElementById('cpuDice');
-const playerNum  = document.getElementById('playerNum');
-const cpuNum     = document.getElementById('cpuNum');
-const banner     = document.getElementById('resultBanner');
-const rollBtn    = document.getElementById('rollBtn');
-const winEl      = document.getElementById('scWins');
-const drawEl     = document.getElementById('scDraws');
-const loseEl     = document.getElementById('scLoses');
+/* ── REFERÊNCIAS DOM - ELEMENTOS HTML A SEREM MANIPULADOS ────── */
+const playerDice = document.getElementById('playerDice');  // Dado do jogador (visual)
+const cpuDice    = document.getElementById('cpuDice');     // Dado da CPU (visual)
+const playerNum  = document.getElementById('playerNum');   // Número do dado do jogador
+const cpuNum     = document.getElementById('cpuNum');      // Número do dado da CPU
+const banner     = document.getElementById('resultBanner'); // Mensagem do resultado
+const rollBtn    = document.getElementById('rollBtn');     // Botão \"Lançar Dados\"
+const winEl      = document.getElementById('scWins');      // Contador de vitórias
+const drawEl     = document.getElementById('scDraws');     // Contador de empates
+const loseEl     = document.getElementById('scLoses');     // Contador de derrotas
 
-/* ── HELPERS ─────────────────────────────────────────────── */
+/* ── FUNÇÕES AUXILIARES ──────────────────────────────────────── */
+/**
+ * Função: bumpNum()
+ * Faz um elemento \"pular\" com animação de impacto
+ * Parâmetros: el (elemento HTML a ser animado)
+ */
 function bumpNum(el) {
-  el.classList.remove('bump');
-  void el.offsetWidth;
-  el.classList.add('bump');
+  el.classList.remove('bump');  // Remove animação anterior
+  void el.offsetWidth;          // Força reflow (reinicia o DOM)
+  el.classList.add('bump');     // Ativa animação novamente
 }
+
+/**
+ * Função: updateHUD()
+ * Atualiza os números no placar (vitórias, empates, derrotas)
+ * Chamada toda vez que uma rodada termina
+ */
 function updateHUD() {
-  winEl.textContent  = score.wins;
-  drawEl.textContent = score.draws;
-  loseEl.textContent = score.loses;
+  winEl.textContent  = score.wins;   // Mostra vitórias
+  drawEl.textContent = score.draws;  // Mostra empates
+  loseEl.textContent = score.loses;  // Mostra derrotas
 }
+
+/**
+ * Função: renderHistory()
+ * Exibe o histórico das últimas 12 rodadas em formato visual
+ * Lógica: transforma array score.history em HTML com cores (win/draw/lose)
+ */
 function renderHistory() {
+  // Mapeia cada rodada do histórico em uma linha HTML
   document.getElementById('historyList').innerHTML = score.history.map(h => `
     <div class="h-row ${h.result}">
       <span class="h-rnd">R${h.round}</span>

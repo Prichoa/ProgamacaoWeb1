@@ -24,42 +24,82 @@ function drawBg() {
 }
 setInterval(drawBg, 55);
 
-/* ── GAME DATA ───────────────────────────────────────────── */
+/* ════════════════════════════════════════════════════════════
+   DADOS DO JOGO - CONSTANTES
+════════════════════════════════════════════════════════════ */
+/**
+ * OBJETO CHOICES: define as 3 opções do jogo
+ * Cada opção contém:
+ *   - icon: emoji representativo
+ *   - label: nome em português
+ *   - beats: qual opção ela vence
+ * Exemplo: rock (pedra) vence scissors (tesoura)
+ */
 const CHOICES = {
-  rock:     { icon:'✊', label:'PEDRA',   beats:'scissors' },
-  paper:    { icon:'🖐️',  label:'PAPEL',   beats:'rock'     },
-  scissors: { icon:'✌️',  label:'TESOURA', beats:'paper'    }
+  rock:     { icon:'✊', label:'PEDRA',   beats:'scissors' },  // Pedra vence tesoura
+  paper:    { icon:'🖐️',  label:'PAPEL',   beats:'rock'     },  // Papel vence pedra
+  scissors: { icon:'✌️',  label:'TESOURA', beats:'paper'    }   // Tesoura vence papel
 };
+// VETOR: opções disponíveis para a CPU escolher aleatoriamente
 const CPU_OPTIONS = ['rock','paper','scissors'];
 
+/**
+ * OBJETO score: mantém dados da partida
+ * Carregado do localStorage se existir, senão usa valores padrão
+ * Propriedades:
+ *   - wins: vitórias do jogador
+ *   - draws: empates
+ *   - loses: derrotas do jogador
+ *   - total: total de rodadas jogadas
+ *   - streak: sequência atual de vitórias
+ *   - maxStreak: maior sequência alcançada
+ *   - history[]: array com as últimas 12 rodadas
+ */
 let score  = JSON.parse(localStorage.getItem('jp_score') ||
   '{"wins":0,"draws":0,"loses":0,"total":0,"streak":0,"maxStreak":0,"history":[]}');
 
-/* ── DOM REFS ────────────────────────────────────────────── */
-const playerEl  = document.getElementById('playerChoice');
-const cpuEl     = document.getElementById('cpuChoice');
-const banner    = document.getElementById('resultBanner');
-const winEl     = document.getElementById('scWins');
-const drawEl    = document.getElementById('scDraws');
-const loseEl    = document.getElementById('scLoses');
-const streakVal = document.getElementById('streakVal');
+/* ── REFERÊNCIAS DOM - ELEMENTOS HTML A SEREM MANIPULADOS ────── */
+const playerEl  = document.getElementById('playerChoice');  // Círculo da escolha do jogador
+const cpuEl     = document.getElementById('cpuChoice');     // Círculo da escolha da CPU
+const banner    = document.getElementById('resultBanner');  // Banner com mensagem de resultado
+const winEl     = document.getElementById('scWins');        // Contador de vitórias
+const drawEl    = document.getElementById('scDraws');       // Contador de empates
+const loseEl    = document.getElementById('scLoses');       // Contador de derrotas
+const streakVal = document.getElementById('streakVal');     // Sequência de vitórias atual
 
-/* ── HELPERS ─────────────────────────────────────────────── */
+/* ── FUNÇÕES AUXILIARES ──────────────────────────────────────── */
+/**
+ * Função: bumpNum()
+ * Faz um elemento "pular" com animação de impacto
+ * Parâmetros: el (elemento HTML a ser animado)
+ */
 function bumpNum(el) {
-  el.classList.remove('bump');
-  void el.offsetWidth;
-  el.classList.add('bump');
+  el.classList.remove('bump');  // Remove animação anterior
+  void el.offsetWidth;          // Força reflow (reinicia o DOM)
+  el.classList.add('bump');     // Ativa animação novamente
 }
 
+/**
+ * Função: updateHUD()
+ * Atualiza os números no placar (vitórias, empates, derrotas, sequência)
+ * Chamada toda vez que uma rodada termina
+ */
 function updateHUD() {
-  winEl.textContent  = score.wins;
-  drawEl.textContent = score.draws;
-  loseEl.textContent = score.loses;
+  winEl.textContent  = score.wins;                          // Mostra vitórias
+  drawEl.textContent = score.draws;                         // Mostra empates
+  loseEl.textContent = score.loses;                         // Mostra derrotas
+  // Exibe sequência atual com plural correto (1 vitória, 2 vitórias, etc)
   streakVal.textContent = `${score.streak} vitória${score.streak !== 1 ? 's' : ''}`;
 }
 
+/**
+ * Função: renderHistory()
+ * Exibe o histórico das últimas 12 rodadas em formato visual
+ * Lógica: transforma array score.history em HTML com cores (win/draw/lose)
+ */
 function renderHistory() {
   const list = document.getElementById('historyList');
+  // Mapeia cada rodada do histórico em uma linha HTML
   list.innerHTML = score.history.map(h => `
     <div class="h-row ${h.result}">
       <span class="h-rnd">R${h.round}</span>
